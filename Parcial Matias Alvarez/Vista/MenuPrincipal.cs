@@ -16,6 +16,7 @@ namespace Formularios
     {
         Usuario usuario;        
         List<Persona> listaPersonas = Aerolinea.ListadoPersonas();
+        List<Pasaje> listaPasajes = Aerolinea.ListadoPasajes();
 
         public MenuPrincipal(Usuario aux)
         {
@@ -30,7 +31,7 @@ namespace Formularios
         private void ActualizarListaPersonas()
         {
             dgv_listadoPersonas.DataSource = null;
-            dgv_listadoPersonas.DataSource = listaPersonas;
+            dgv_listadoPersonas.DataSource = listaPasajes;
 
         }
         public void CargarPersona(Persona persona)
@@ -51,9 +52,7 @@ namespace Formularios
                 ActualizarListaPersonas();
 
                 MessageBox.Show($"nombre {personaAcargar.Nombre}");
-            }
-
-            
+            }            
         }
     }
 }

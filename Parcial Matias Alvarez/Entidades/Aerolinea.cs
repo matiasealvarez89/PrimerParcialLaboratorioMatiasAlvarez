@@ -5,14 +5,22 @@
     {
         static List<Usuario> listadoEmpleados;
         static List<Persona> listadoPersonas;
+        static List<Avion> flotaAviones;
+        static List<Vuelo> listadoVuelos;
+        static List<Pasaje> listadoPasajes;
 
         static Aerolinea()
         {
             listadoEmpleados = new List<Usuario>();
             listadoPersonas = new List<Persona>();
+            flotaAviones = new List<Avion>();
+            listadoVuelos = new List<Vuelo>();
+            listadoPasajes = new List<Pasaje>();
 
             CargarEmpleados();
             CargarPersonas();
+            CargarFlotaAviones();
+            CargarPasajes();
         }
 
         private static void CargarEmpleados()
@@ -23,6 +31,15 @@
             listadoEmpleados.Add(new Usuario("clara", "4532"));
         }
 
+        private static void CargarPasajes()
+        {
+            listadoPasajes.Add(new Pasaje(2345123, "HF-598", 1, 20, false));
+            listadoPasajes.Add(new Pasaje(40234321, "HF-598", 2, 20, true));
+            listadoPasajes.Add(new Pasaje(34864557, "HF-598", 2, 20, true));
+            listadoPasajes.Add(new Pasaje(30234657, "HF-598", 2, 15, true));
+            listadoPasajes.Add(new Pasaje(32104665, "HF-598", 1, 15, false));
+        }
+
         private static void CargarPersonas()
         {
             listadoPersonas.Add(new Persona("Camila", "Perez", 2345123, new DateTime(2000, 11, 4)));
@@ -31,6 +48,17 @@
             listadoPersonas.Add(new Persona("Florencia", "Juarez", 34864557, new DateTime(1990, 8, 25)));
             listadoPersonas.Add(new Persona("Ariel", "Hefre", 32104665, new DateTime(1996, 3, 23)));
 
+        }
+
+        private static void CargarFlotaAviones()
+        {
+            flotaAviones.Add(new Avion(1623, 80, 300, true, true));
+            flotaAviones.Add(new Avion(3245, 64, 200, true, false));
+            flotaAviones.Add(new Avion(6329, 142, 500, true, true));
+            flotaAviones.Add(new Avion(8923, 48, 150, false, false));
+            flotaAviones.Add(new Avion(1007, 72, 210, false, true));
+            flotaAviones.Add(new Avion(2939, 42, 208, false, false));
+            flotaAviones.Add(new Avion(9929, 128, 450, true, true));
         }
 
         public static Usuario ValidarUsuario(string nombre, string pass)
@@ -74,6 +102,40 @@
                 return 0;
             }
             return -1;
+        }
+
+        public static List<Vuelo> ListadoVuelos()
+        {
+            return listadoVuelos;
+        }
+
+        public static List<Pasaje> ListadoPasajes()
+        {
+            return listadoPasajes;
+        }
+
+        public static Vuelo RetornarVueloPorId(string id)
+        {
+            foreach (Vuelo item in listadoVuelos)
+            {
+                if(id == item.Id)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
+        public static Pasaje RetornarPasajePorId(int id)
+        {
+            foreach (Pasaje item in listadoPasajes)
+            {
+                if (id == item.Id)
+                {
+                    return item;
+                }
+            }
+            return null;
         }
 
     }

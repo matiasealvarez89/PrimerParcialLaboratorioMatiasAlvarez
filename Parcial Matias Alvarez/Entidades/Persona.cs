@@ -29,10 +29,9 @@ namespace Entidades
             apellido = "";
             dni = 0;
             fechaNacimiento = new DateTime(1900, 1, 1);
-
         }
 
-        public static int CalcularEdad(DateTime fechaNacimiento)
+        static int CalcularEdad(DateTime fechaNacimiento)
         {
             
             DateTime fechaActual = DateTime.Today;
