@@ -42,7 +42,7 @@
             // lbl_nombre
             // 
             this.lbl_nombre.AutoSize = true;
-            this.lbl_nombre.Location = new System.Drawing.Point(34, 62);
+            this.lbl_nombre.Location = new System.Drawing.Point(34, 104);
             this.lbl_nombre.Name = "lbl_nombre";
             this.lbl_nombre.Size = new System.Drawing.Size(51, 15);
             this.lbl_nombre.TabIndex = 0;
@@ -51,7 +51,7 @@
             // lbl_apellido
             // 
             this.lbl_apellido.AutoSize = true;
-            this.lbl_apellido.Location = new System.Drawing.Point(34, 102);
+            this.lbl_apellido.Location = new System.Drawing.Point(34, 160);
             this.lbl_apellido.Name = "lbl_apellido";
             this.lbl_apellido.Size = new System.Drawing.Size(51, 15);
             this.lbl_apellido.TabIndex = 1;
@@ -60,7 +60,7 @@
             // lbl_dni
             // 
             this.lbl_dni.AutoSize = true;
-            this.lbl_dni.Location = new System.Drawing.Point(34, 141);
+            this.lbl_dni.Location = new System.Drawing.Point(34, 58);
             this.lbl_dni.Name = "lbl_dni";
             this.lbl_dni.Size = new System.Drawing.Size(27, 15);
             this.lbl_dni.TabIndex = 2;
@@ -75,7 +75,8 @@
             // 
             // txt_nombre
             // 
-            this.txt_nombre.Location = new System.Drawing.Point(159, 54);
+            this.txt_nombre.Location = new System.Drawing.Point(154, 96);
+            this.txt_nombre.MaxLength = 50;
             this.txt_nombre.Name = "txt_nombre";
             this.txt_nombre.Size = new System.Drawing.Size(195, 23);
             this.txt_nombre.TabIndex = 4;
@@ -83,7 +84,8 @@
             // 
             // txt_apellido
             // 
-            this.txt_apellido.Location = new System.Drawing.Point(159, 94);
+            this.txt_apellido.Location = new System.Drawing.Point(154, 152);
+            this.txt_apellido.MaxLength = 50;
             this.txt_apellido.Name = "txt_apellido";
             this.txt_apellido.Size = new System.Drawing.Size(195, 23);
             this.txt_apellido.TabIndex = 5;
@@ -91,7 +93,8 @@
             // 
             // txt_dni
             // 
-            this.txt_dni.Location = new System.Drawing.Point(159, 133);
+            this.txt_dni.Location = new System.Drawing.Point(159, 50);
+            this.txt_dni.MaxLength = 8;
             this.txt_dni.Name = "txt_dni";
             this.txt_dni.Size = new System.Drawing.Size(195, 23);
             this.txt_dni.TabIndex = 6;

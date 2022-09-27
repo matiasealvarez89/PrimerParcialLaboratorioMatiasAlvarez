@@ -19,15 +19,19 @@ namespace Entidades
         float pesoEquipaje;
         static int ultimoId = 5000;
 
-        public Pasaje(int dni, string idVuelo,int cantidadEquipaje, float pesoEquiepaje, bool esPremium)
+
+        public Pasaje(int dni, string idVuelo, bool esPremium)
         {
             this.idVuelo = idVuelo;
-            this.cantidadEquipaje = cantidadEquipaje;
-            this.pesoEquipaje = pesoEquiepaje;
             this.esPremium = esPremium;
             CargarPersona(dni);
             CalcularPrecio();
             CargarId();
+        }
+        public Pasaje(int dni, string idVuelo,int cantidadEquipaje, float pesoEquiepaje, bool esPremium) : this (dni,idVuelo,esPremium)
+        {            
+            this.cantidadEquipaje = cantidadEquipaje;
+            this.pesoEquipaje = pesoEquiepaje;           
         }        
         
         private void CargarPersona(int dni)

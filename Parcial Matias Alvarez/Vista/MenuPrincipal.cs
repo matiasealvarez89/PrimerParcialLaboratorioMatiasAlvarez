@@ -5,9 +5,9 @@ namespace Formularios
     public partial class MenuPrincipal : Form
     {
         Usuario usuario;        
-        List<Persona> listaPersonas = Aerolinea.ListadoPersonas();
+        static List<Persona> listaPersonas = Aerolinea.ListadoPersonas();
         List<Pasaje> listaPasajes = Aerolinea.ListadoPasajes();
-        List<Vuelo> listadoVuelos = Aerolinea.ListadoVuelos();
+        static List<Vuelo> listadoVuelos = Aerolinea.ListadoVuelos();
         List<Avion> flotaAviones = Aerolinea.FlotaAviones();
 
 
@@ -21,17 +21,32 @@ namespace Formularios
             ActualizarListaVuelos();            
         }
 
-        private void ActualizarListaVuelos()
+        public void ActualizarListaVuelos()
         {
             dgv_listadoVuelos.DataSource = null;
-            dgv_listadoVuelos.DataSource = listadoVuelos;            
+            dgv_listadoVuelos.DataSource = listaPersonas; //Cambiar           
         }
 
         
 
-        public void CargarPersona(Persona persona)
+        public static void CargarPersona(Persona persona)
         {
             listaPersonas.Add(persona);
+        }
+
+        public static Persona RetornarPersonaPorDNI(int dni)
+        {
+            if(dni != 0)
+            {
+                foreach (Persona persona in listaPersonas)
+                {
+                    if(dni == persona.Dni)
+                    {
+                        return persona;
+                    }
+                }
+            }
+            return null;
         }
 
         private void btn_cargarPersona_Click(object sender, EventArgs e)
@@ -50,12 +65,39 @@ namespace Formularios
             }            
         }
 
+
+        public static bool ExistePersona(int dni)
+        {
+            foreach (Persona persona in listaPersonas)
+            {
+                if(dni == persona.Dni)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         private void dgv_listadoVuelos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            this.dgv_listadoVuelos.Columns["Recaudacion"].DefaultCellStyle.Format = "c";
+            //this.dgv_listadoVuelos.Columns["Recaudacion"].DefaultCellStyle.Format = "c";
             
 
             
+        }
+
+        public static List<Vuelo> ListadoVueloMenu()
+        {
+            return listadoVuelos;
+        }
+
+        private void btn_venderPasajes_Click(object sender, EventArgs e)
+        {
+            VentaPasajes ventaPasajes = new VentaPasajes();
+
+            if(DialogResult.OK == ventaPasajes.ShowDialog())
+            {
+                ActualizarListaVuelos();
+            }
         }
     }
 }

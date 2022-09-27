@@ -21,3 +21,4 @@ C:\Users\matia\OneDrive\Escritorio\Parcial Progra II\Parcial Matias Alvarez\Vist
 C:\Users\matia\OneDrive\Escritorio\Parcial Progra II\Parcial Matias Alvarez\Vista\obj\Debug\net6.0-windows\ref\Formularios.dll
 C:\Users\matia\OneDrive\Escritorio\Parcial Progra II\Parcial Matias Alvarez\Vista\obj\Debug\net6.0-windows\Formularios.MenuPrincipal.resources
 C:\Users\matia\OneDrive\Escritorio\Parcial Progra II\Parcial Matias Alvarez\Vista\obj\Debug\net6.0-windows\Formularios.CargaPersona.resources
+C:\Users\matia\OneDrive\Escritorio\Parcial Progra II\Parcial Matias Alvarez\Vista\obj\Debug\net6.0-windows\Formularios.VentaPasajes.resources

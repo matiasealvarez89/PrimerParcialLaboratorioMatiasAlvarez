@@ -18,23 +18,24 @@ namespace Formularios
         
         public  CargaPersona()
         {  
-            InitializeComponent();  
-            
-
-            //Persona persona = new Persona("", "", 0, new DateTime(1900, 1, 1));
-            
-        }
-
-        
+            InitializeComponent();            
+        }       
 
         public void btn_accept_Click(object sender, EventArgs e)
         {
             if(txt_nombre.Text != "" && txt_apellido.Text != "" && txt_dni.Text != "" && dtp_fechaNacimiento.Value.Date < DateTime.Now)
             {
-                Persona nuevaPersona = new Persona(txt_nombre.Text, txt_apellido.Text, int.Parse(txt_dni.Text),(dtp_fechaNacimiento.Value.Date));
-                persona = nuevaPersona;
-                DialogResult = DialogResult.OK;
-                Close();                             
+                if (!MenuPrincipal.ExistePersona(int.Parse(txt_dni.Text)))
+                {
+                    Persona nuevaPersona = new Persona(txt_nombre.Text, txt_apellido.Text, int.Parse(txt_dni.Text), (dtp_fechaNacimiento.Value.Date));
+                    persona = nuevaPersona;
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Ya existe una persona cargada con ese DNI");
+                }
             }
             else
             {

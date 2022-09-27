@@ -40,6 +40,8 @@
             listadoPasajes.Add(new Pasaje(34864557, "HF-598", 2, 20, true));
             listadoPasajes.Add(new Pasaje(30234657, "HF-598", 2, 15, true));
             listadoPasajes.Add(new Pasaje(32104665, "HF-598", 1, 15, false));
+            listadoPasajes.Add(new Pasaje(34834647, "HF-598", 1, 20, false));
+
         }
 
         private static void CargarVuelos()
@@ -54,6 +56,7 @@
             listadoPersonas.Add(new Persona("Marcos", "Rojo", 30234657, new DateTime(1989, 6, 12)));
             listadoPersonas.Add(new Persona("Florencia", "Juarez", 34864557, new DateTime(1990, 8, 25)));
             listadoPersonas.Add(new Persona("Ariel", "Hefre", 32104665, new DateTime(1996, 3, 23)));
+            listadoPersonas.Add(new Persona("Matias", "Alvarez", 34834647, new DateTime(1989, 12, 6)));
 
         }
 

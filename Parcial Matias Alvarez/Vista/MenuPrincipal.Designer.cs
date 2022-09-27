@@ -60,16 +60,17 @@
             // 
             // btn_venderPasajes
             // 
-            this.btn_venderPasajes.Location = new System.Drawing.Point(28, 178);
+            this.btn_venderPasajes.Location = new System.Drawing.Point(12, 180);
             this.btn_venderPasajes.Name = "btn_venderPasajes";
             this.btn_venderPasajes.Size = new System.Drawing.Size(122, 42);
             this.btn_venderPasajes.TabIndex = 2;
             this.btn_venderPasajes.Text = "Vender Pasajes";
             this.btn_venderPasajes.UseVisualStyleBackColor = true;
+            this.btn_venderPasajes.Click += new System.EventHandler(this.btn_venderPasajes_Click);
             // 
             // btn_cargarPersona
             // 
-            this.btn_cargarPersona.Location = new System.Drawing.Point(28, 97);
+            this.btn_cargarPersona.Location = new System.Drawing.Point(12, 100);
             this.btn_cargarPersona.Name = "btn_cargarPersona";
             this.btn_cargarPersona.Size = new System.Drawing.Size(122, 42);
             this.btn_cargarPersona.TabIndex = 1;
