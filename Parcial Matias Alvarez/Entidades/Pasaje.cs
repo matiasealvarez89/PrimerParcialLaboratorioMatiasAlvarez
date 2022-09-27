@@ -19,8 +19,6 @@ namespace Entidades
         float pesoEquipaje;
         static int ultimoId = 5000;
 
-
-
         public Pasaje(int dni, string idVuelo,int cantidadEquipaje, float pesoEquiepaje, bool esPremium)
         {
             this.idVuelo = idVuelo;
@@ -77,6 +75,11 @@ namespace Entidades
             get { return id; }
         }
 
+        public string IdVuelo
+        {
+            get { return idVuelo; }
+        }
+
         public int CantidadEquipaje
         {
             get { return cantidadEquipaje; }
@@ -88,19 +91,19 @@ namespace Entidades
 
         private void CalcularPrecio()
         {
-            Vuelo auxVuelo = Aerolinea.RetornarVueloPorId(this.idVuelo);
+            Vuelo auxVuelo = Aerolinea.RetornarVueloPorId(IdVuelo);
             
             if(auxVuelo != null)
             {
-                float duracion = auxVuelo.DuracionVuelo();
-                float precio;
+                float duracion = auxVuelo.CalcularDuracionVuelo();
+                float precio = 0;
 
                 switch (auxVuelo.Internacional)
                 {
-                    case false:
+                    case "No":
                         precio = duracion * 50;
                         break;
-                    case true:
+                    case "Si":
                         precio = duracion * 100;
                         break;
                 }
@@ -110,8 +113,7 @@ namespace Entidades
                 }
 
                 this.precio = precio;
-            }
-            
+            }            
         }
 
         private void CargarId()

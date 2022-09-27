@@ -36,21 +36,27 @@ namespace Entidades
     {
         string id;
         string destino;
-        Avion avion = new Avion();
-        List<int> idPasajeros = new List<int> ();
-        bool comida;
-        bool wifi;
-        bool internacional;
+        int idAvion;
+        List<int> idPasajeros = new List<int> ();        
+        string internacional;
         DateTime salida;
         DateTime llegada;
-        int cantidadAsientos;
-        int cantidadAsientosPremium;        
-        float capacidadEquipaje;
+        float recaudacion;
+        int cantidadPasajeros;
+        float duracionVuelo;
+        string asientosDisponibles;
+        string asientosDisponiblesPremium;
 
-
-        public bool Internacional
+        public Vuelo(string id, string destino, int idAvion, DateTime salida)
         {
-            get { return internacional; }
+            this.id = id;
+            this.destino = destino;
+            this.idAvion = idAvion;
+            this.salida = salida;
+            this.internacional = EsInternacional(destino);
+            CalcularHorarioLlegada();
+            this.duracionVuelo = CalcularDuracionVuelo();                       
+            ActualizarVuelo();             
         }
 
         public string Id
@@ -58,6 +64,58 @@ namespace Entidades
             get { return id; }
         }
 
+        public string Destino { get { return destino; } }
+
+        public string Internacional
+        {
+            get { return internacional; }
+        }
+
+        private int IdAvion
+        {
+            get { return idAvion; }
+        }
+
+        public DateTime Salida { get { return salida; } }
+
+        public DateTime Llegada { get { return llegada; } }
+
+        public float Recaudacion
+        {
+            get { return recaudacion; }
+            set { recaudacion = value; }
+        }
+
+        public int CantidadPasajeros
+        {
+            get { return cantidadPasajeros; }
+            set { this.cantidadPasajeros = value; }
+        }
+
+        public float DuracionVuelo
+        {
+            get { return duracionVuelo; }
+        }
+
+        public string AsientosDisponibles
+        {
+            get { return asientosDisponibles; }
+            set { this.asientosDisponibles = value; }
+        }
+
+        public string AsientosDisponiblesPremium
+        {
+            get { return asientosDisponiblesPremium; }
+            set { this.asientosDisponiblesPremium = value; }
+        }
+        public void ActualizarVuelo()
+        {
+            idPasajeros = Aerolinea.RetornarListaIdPasajePorIdVuelo(Id);
+            CantidadPasajeros = idPasajeros.Count;
+            Recaudacion = CalcularRecaudacion();
+            AsientosDisponibles = CalcularAsientosDisponibles();
+            AsientosDisponiblesPremium = CalcularAsientosDisponiblesPremium();
+        }     
 
         public float CalcularRecaudacion() 
         {
@@ -68,7 +126,6 @@ namespace Entidades
             {
                 value += item.Precio;
             }
-
             return value;
         }
 
@@ -86,48 +143,89 @@ namespace Entidades
                     {
                         auxListaPasajes.Add(auxPasaje);
                     }
-
-                }
-                
+                }                
             }
             return auxListaPasajes;
         }
 
         private void CalcularHorarioLlegada()
-        {
-            if(this.salida != null)
+        {            
+            Random rand = new Random();
+            int horaDuacion;
+            switch (Internacional)
             {
-                Random rand = new Random();
-                float horaDuacion;
-                switch (Internacional)
-                {
-                    case false:
-                        horaDuacion = rand.Next(2, 4);
-                        this.llegada = this.salida.AddHours(horaDuacion);
-                        break;
-                    case true:
-                        horaDuacion = rand.Next(8, 12);
-                        this.llegada = this.salida.AddHours(horaDuacion);
-                        break;
-                }
-            }
+                case "No":
+                    horaDuacion = rand.Next(2, 4);
+                    this.llegada = this.salida.AddHours(horaDuacion);
+                    break;
+                case "Si":
+                    horaDuacion = rand.Next(8, 12);
+                    this.llegada = this.salida.AddHours(horaDuacion);
+                    break;
+            }            
         }
 
-        public float DuracionVuelo()
+        public float CalcularDuracionVuelo()
         {
             TimeSpan aux;
             float duracion;
 
-            aux = llegada - salida;
+            aux =  llegada - salida;
 
             duracion = aux.Hours;
 
             return duracion;
         }
         
-        
-        
-        
-        
+        private string EsInternacional(string destino)
+        {
+            string retorno = "No";            
+
+            if (destino == "Recife" || destino == "Roma" || destino == "Acapulco" || destino == "Miami")
+            {
+                retorno = "Si";
+            }
+            return retorno;           
+        }      
+
+        private string CalcularAsientosDisponibles()
+        {
+            Avion aux = Aerolinea.RetornarAvionPorId(IdAvion);
+            int contadorAsientos = 0;
+            List<Pasaje> listaPasajeros = ListaPasajeVuelo();
+            string retorno;
+
+            foreach (Pasaje pasaje in listaPasajeros)
+            {
+                if(!pasaje.EsPremium)
+                {
+                    contadorAsientos++;
+                }
+            }
+            
+            retorno = contadorAsientos + "/" + aux.CantidadAsientos;
+            return retorno; 
+        }
+
+        private string CalcularAsientosDisponiblesPremium()
+        {
+            Avion aux = Aerolinea.RetornarAvionPorId(IdAvion);
+            int contadorAsientos = 0;
+            List<Pasaje> listaPasajeros = ListaPasajeVuelo();
+            string retorno;
+
+            foreach (Pasaje pasaje in listaPasajeros)
+            {
+                if (pasaje.EsPremium)
+                {
+                    contadorAsientos++;
+                }
+            }
+
+            retorno = contadorAsientos + "/" + aux.CantidadAsientosPremium;
+            return retorno;
+        }
+
+
     }
 }

@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Entidades;
+﻿using Entidades;
 
 namespace Formularios
 {
@@ -17,23 +7,28 @@ namespace Formularios
         Usuario usuario;        
         List<Persona> listaPersonas = Aerolinea.ListadoPersonas();
         List<Pasaje> listaPasajes = Aerolinea.ListadoPasajes();
+        List<Vuelo> listadoVuelos = Aerolinea.ListadoVuelos();
+        List<Avion> flotaAviones = Aerolinea.FlotaAviones();
+
 
         public MenuPrincipal(Usuario aux)
         {
             InitializeComponent();
 
-            usuario = aux;
-            lbl_nombreUsuario.Text = "Usuario: " + usuario.user;
+            usuario = aux;           
+            lbl_nombreUsuario.Text = "Usuario: " + usuario.user + " " + DateTime.Now.Date.ToString("dd-MM-yyyy");
 
-            ActualizarListaPersonas();
+            ActualizarListaVuelos();            
         }
 
-        private void ActualizarListaPersonas()
+        private void ActualizarListaVuelos()
         {
-            dgv_listadoPersonas.DataSource = null;
-            dgv_listadoPersonas.DataSource = listaPasajes;
-
+            dgv_listadoVuelos.DataSource = null;
+            dgv_listadoVuelos.DataSource = listadoVuelos;            
         }
+
+        
+
         public void CargarPersona(Persona persona)
         {
             listaPersonas.Add(persona);
@@ -49,10 +44,18 @@ namespace Formularios
                 personaAcargar = cargaPersona.ObtenerPersona;
 
                 CargarPersona(personaAcargar);
-                ActualizarListaPersonas();
+                ActualizarListaVuelos();
 
-                MessageBox.Show($"nombre {personaAcargar.Nombre}");
+                MessageBox.Show($"Se cargo Correctamente a {personaAcargar.Nombre}");
             }            
+        }
+
+        private void dgv_listadoVuelos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            this.dgv_listadoVuelos.Columns["Recaudacion"].DefaultCellStyle.Format = "c";
+            
+
+            
         }
     }
 }

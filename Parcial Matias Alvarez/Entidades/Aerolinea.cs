@@ -20,7 +20,9 @@
             CargarEmpleados();
             CargarPersonas();
             CargarFlotaAviones();
-            CargarPasajes();
+            CargarVuelos();
+            CargarPasajes();            
+            ActualizarListadoVuelos();
         }
 
         private static void CargarEmpleados()
@@ -38,6 +40,11 @@
             listadoPasajes.Add(new Pasaje(34864557, "HF-598", 2, 20, true));
             listadoPasajes.Add(new Pasaje(30234657, "HF-598", 2, 15, true));
             listadoPasajes.Add(new Pasaje(32104665, "HF-598", 1, 15, false));
+        }
+
+        private static void CargarVuelos()
+        {
+            listadoVuelos.Add(new Vuelo("HF-598", "Recife", 3245, new DateTime(2022, 11, 6, 9, 30, 0)));
         }
 
         private static void CargarPersonas()
@@ -114,6 +121,11 @@
             return listadoPasajes;
         }
 
+        public static List<Avion> FlotaAviones()
+        {
+            return flotaAviones;
+        }
+
         public static Vuelo RetornarVueloPorId(string id)
         {
             foreach (Vuelo item in listadoVuelos)
@@ -136,6 +148,40 @@
                 }
             }
             return null;
+        }
+
+        public static Avion RetornarAvionPorId(int id)
+        {
+            foreach (Avion item in flotaAviones)
+            {
+                if(id == item.Id)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
+        public static List<int> RetornarListaIdPasajePorIdVuelo(string idVuelo)
+        {
+            List<int> listaIdPasajePorId = new List<int>();
+
+            foreach (Pasaje item in listadoPasajes)
+            {
+                if(idVuelo == item.IdVuelo)
+                {
+                    listaIdPasajePorId.Add(item.Id);
+                }
+            }
+            return listaIdPasajePorId;
+        }
+
+        private static void ActualizarListadoVuelos()
+        {
+            foreach (Vuelo item in listadoVuelos)
+            {
+                item.ActualizarVuelo();
+            }
         }
 
     }

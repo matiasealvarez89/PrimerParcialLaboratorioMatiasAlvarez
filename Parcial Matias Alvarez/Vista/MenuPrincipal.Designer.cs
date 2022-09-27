@@ -32,9 +32,9 @@
             this.lbl_nombreUsuario = new System.Windows.Forms.Label();
             this.btn_venderPasajes = new System.Windows.Forms.Button();
             this.btn_cargarPersona = new System.Windows.Forms.Button();
-            this.dgv_listadoPersonas = new System.Windows.Forms.DataGridView();
+            this.dgv_listadoVuelos = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_listadoPersonas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_listadoVuelos)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -46,13 +46,13 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(199, 450);
+            this.panel1.Size = new System.Drawing.Size(164, 450);
             this.panel1.TabIndex = 0;
             // 
             // lbl_nombreUsuario
             // 
             this.lbl_nombreUsuario.AutoSize = true;
-            this.lbl_nombreUsuario.Location = new System.Drawing.Point(28, 409);
+            this.lbl_nombreUsuario.Location = new System.Drawing.Point(3, 423);
             this.lbl_nombreUsuario.Name = "lbl_nombreUsuario";
             this.lbl_nombreUsuario.Size = new System.Drawing.Size(30, 15);
             this.lbl_nombreUsuario.TabIndex = 3;
@@ -60,7 +60,7 @@
             // 
             // btn_venderPasajes
             // 
-            this.btn_venderPasajes.Location = new System.Drawing.Point(28, 150);
+            this.btn_venderPasajes.Location = new System.Drawing.Point(28, 178);
             this.btn_venderPasajes.Name = "btn_venderPasajes";
             this.btn_venderPasajes.Size = new System.Drawing.Size(122, 42);
             this.btn_venderPasajes.TabIndex = 2;
@@ -69,7 +69,7 @@
             // 
             // btn_cargarPersona
             // 
-            this.btn_cargarPersona.Location = new System.Drawing.Point(28, 81);
+            this.btn_cargarPersona.Location = new System.Drawing.Point(28, 97);
             this.btn_cargarPersona.Name = "btn_cargarPersona";
             this.btn_cargarPersona.Size = new System.Drawing.Size(122, 42);
             this.btn_cargarPersona.TabIndex = 1;
@@ -77,30 +77,31 @@
             this.btn_cargarPersona.UseVisualStyleBackColor = true;
             this.btn_cargarPersona.Click += new System.EventHandler(this.btn_cargarPersona_Click);
             // 
-            // dgv_listadoPersonas
+            // dgv_listadoVuelos
             // 
-            this.dgv_listadoPersonas.AllowUserToAddRows = false;
-            this.dgv_listadoPersonas.AllowUserToDeleteRows = false;
-            this.dgv_listadoPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_listadoPersonas.Location = new System.Drawing.Point(238, 217);
-            this.dgv_listadoPersonas.Name = "dgv_listadoPersonas";
-            this.dgv_listadoPersonas.ReadOnly = true;
-            this.dgv_listadoPersonas.RowTemplate.Height = 25;
-            this.dgv_listadoPersonas.Size = new System.Drawing.Size(501, 221);
-            this.dgv_listadoPersonas.TabIndex = 4;
+            this.dgv_listadoVuelos.AllowUserToAddRows = false;
+            this.dgv_listadoVuelos.AllowUserToDeleteRows = false;
+            this.dgv_listadoVuelos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_listadoVuelos.Location = new System.Drawing.Point(170, 217);
+            this.dgv_listadoVuelos.Name = "dgv_listadoVuelos";
+            this.dgv_listadoVuelos.ReadOnly = true;
+            this.dgv_listadoVuelos.RowTemplate.Height = 25;
+            this.dgv_listadoVuelos.Size = new System.Drawing.Size(978, 221);
+            this.dgv_listadoVuelos.TabIndex = 4;
+            this.dgv_listadoVuelos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_listadoVuelos_CellFormatting);
             // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 450);
-            this.Controls.Add(this.dgv_listadoPersonas);
+            this.ClientSize = new System.Drawing.Size(1160, 450);
+            this.Controls.Add(this.dgv_listadoVuelos);
             this.Controls.Add(this.panel1);
             this.Name = "MenuPrincipal";
             this.Text = "MenuPrincipal";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_listadoPersonas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_listadoVuelos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -111,6 +112,6 @@
         private Button btn_venderPasajes;
         private Button btn_cargarPersona;
         private Label lbl_nombreUsuario;
-        private DataGridView dgv_listadoPersonas;
+        private DataGridView dgv_listadoVuelos;
     }
 }
