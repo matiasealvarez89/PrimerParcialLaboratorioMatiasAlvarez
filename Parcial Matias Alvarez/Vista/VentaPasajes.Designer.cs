@@ -38,8 +38,16 @@
             this.chk_internacional = new System.Windows.Forms.CheckBox();
             this.lbl_seleccioneVuelo = new System.Windows.Forms.Label();
             this.cbo_vuelo = new System.Windows.Forms.ComboBox();
-            this.cbo_esPremium = new System.Windows.Forms.CheckBox();
+            this.chk_esPremium = new System.Windows.Forms.CheckBox();
             this.btn_cotizar = new System.Windows.Forms.Button();
+            this.lbl_precio = new System.Windows.Forms.Label();
+            this.cbo_cantidadValijas = new System.Windows.Forms.ComboBox();
+            this.lbl_cantidadValijas = new System.Windows.Forms.Label();
+            this.txt_peso1 = new System.Windows.Forms.TextBox();
+            this.txt_peso2 = new System.Windows.Forms.TextBox();
+            this.btn_comprarPasaje = new System.Windows.Forms.Button();
+            this.btn_comprarMasPasajes = new System.Windows.Forms.Button();
+            this.chk_cargarValijasDespues = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lbl_dni
@@ -109,8 +117,6 @@
             // chk_internacional
             // 
             this.chk_internacional.AutoSize = true;
-            this.chk_internacional.Checked = true;
-            this.chk_internacional.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_internacional.Location = new System.Drawing.Point(91, 184);
             this.chk_internacional.Name = "chk_internacional";
             this.chk_internacional.Size = new System.Drawing.Size(95, 19);
@@ -136,32 +142,122 @@
             this.cbo_vuelo.Size = new System.Drawing.Size(277, 23);
             this.cbo_vuelo.TabIndex = 10;
             // 
-            // cbo_esPremium
+            // chk_esPremium
             // 
-            this.cbo_esPremium.AutoSize = true;
-            this.cbo_esPremium.Location = new System.Drawing.Point(12, 350);
-            this.cbo_esPremium.Name = "cbo_esPremium";
-            this.cbo_esPremium.Size = new System.Drawing.Size(89, 19);
-            this.cbo_esPremium.TabIndex = 11;
-            this.cbo_esPremium.Text = "Es Premium";
-            this.cbo_esPremium.UseVisualStyleBackColor = true;
+            this.chk_esPremium.AutoSize = true;
+            this.chk_esPremium.Location = new System.Drawing.Point(12, 351);
+            this.chk_esPremium.Name = "chk_esPremium";
+            this.chk_esPremium.Size = new System.Drawing.Size(89, 19);
+            this.chk_esPremium.TabIndex = 11;
+            this.chk_esPremium.Text = "Es Premium";
+            this.chk_esPremium.UseVisualStyleBackColor = true;
             // 
             // btn_cotizar
             // 
-            this.btn_cotizar.Location = new System.Drawing.Point(12, 386);
+            this.btn_cotizar.Location = new System.Drawing.Point(12, 406);
             this.btn_cotizar.Name = "btn_cotizar";
-            this.btn_cotizar.Size = new System.Drawing.Size(107, 23);
+            this.btn_cotizar.Size = new System.Drawing.Size(125, 32);
             this.btn_cotizar.TabIndex = 12;
             this.btn_cotizar.Text = "Cotizar";
             this.btn_cotizar.UseVisualStyleBackColor = true;
+            this.btn_cotizar.Click += new System.EventHandler(this.btn_cotizar_Click);
+            // 
+            // lbl_precio
+            // 
+            this.lbl_precio.AutoSize = true;
+            this.lbl_precio.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_precio.Location = new System.Drawing.Point(402, 55);
+            this.lbl_precio.Name = "lbl_precio";
+            this.lbl_precio.Size = new System.Drawing.Size(84, 32);
+            this.lbl_precio.TabIndex = 13;
+            this.lbl_precio.Text = "Precio:";
+            // 
+            // cbo_cantidadValijas
+            // 
+            this.cbo_cantidadValijas.Enabled = false;
+            this.cbo_cantidadValijas.FormattingEnabled = true;
+            this.cbo_cantidadValijas.Location = new System.Drawing.Point(514, 202);
+            this.cbo_cantidadValijas.Name = "cbo_cantidadValijas";
+            this.cbo_cantidadValijas.Size = new System.Drawing.Size(36, 23);
+            this.cbo_cantidadValijas.TabIndex = 14;
+            this.cbo_cantidadValijas.SelectedIndexChanged += new System.EventHandler(this.cbo_cantidadValijas_SelectedIndexChanged);
+            // 
+            // lbl_cantidadValijas
+            // 
+            this.lbl_cantidadValijas.AutoSize = true;
+            this.lbl_cantidadValijas.Location = new System.Drawing.Point(402, 210);
+            this.lbl_cantidadValijas.Name = "lbl_cantidadValijas";
+            this.lbl_cantidadValijas.Size = new System.Drawing.Size(106, 15);
+            this.lbl_cantidadValijas.TabIndex = 15;
+            this.lbl_cantidadValijas.Text = "Cantidad de Valijas";
+            // 
+            // txt_peso1
+            // 
+            this.txt_peso1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txt_peso1.Location = new System.Drawing.Point(594, 207);
+            this.txt_peso1.MaxLength = 2;
+            this.txt_peso1.Name = "txt_peso1";
+            this.txt_peso1.PlaceholderText = "Ingrese el peso (Kg)";
+            this.txt_peso1.Size = new System.Drawing.Size(124, 23);
+            this.txt_peso1.TabIndex = 16;
+            // 
+            // txt_peso2
+            // 
+            this.txt_peso2.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txt_peso2.Location = new System.Drawing.Point(594, 246);
+            this.txt_peso2.MaxLength = 2;
+            this.txt_peso2.Name = "txt_peso2";
+            this.txt_peso2.PlaceholderText = "Ingrese el peso (Kg)";
+            this.txt_peso2.Size = new System.Drawing.Size(124, 23);
+            this.txt_peso2.TabIndex = 17;
+            this.txt_peso2.Visible = false;
+            // 
+            // btn_comprarPasaje
+            // 
+            this.btn_comprarPasaje.Location = new System.Drawing.Point(402, 398);
+            this.btn_comprarPasaje.Name = "btn_comprarPasaje";
+            this.btn_comprarPasaje.Size = new System.Drawing.Size(132, 40);
+            this.btn_comprarPasaje.TabIndex = 18;
+            this.btn_comprarPasaje.Text = "Comprar";
+            this.btn_comprarPasaje.UseVisualStyleBackColor = true;
+            this.btn_comprarPasaje.Click += new System.EventHandler(this.btn_comprarPasaje_Click);
+            // 
+            // btn_comprarMasPasajes
+            // 
+            this.btn_comprarMasPasajes.Location = new System.Drawing.Point(594, 398);
+            this.btn_comprarMasPasajes.Name = "btn_comprarMasPasajes";
+            this.btn_comprarMasPasajes.Size = new System.Drawing.Size(132, 40);
+            this.btn_comprarMasPasajes.TabIndex = 19;
+            this.btn_comprarMasPasajes.Text = "Comprar mas pasajes";
+            this.btn_comprarMasPasajes.UseVisualStyleBackColor = true;
+            this.btn_comprarMasPasajes.Click += new System.EventHandler(this.btn_comprarMasPasajes_Click);
+            // 
+            // chk_cargarValijasDespues
+            // 
+            this.chk_cargarValijasDespues.AutoSize = true;
+            this.chk_cargarValijasDespues.Location = new System.Drawing.Point(402, 250);
+            this.chk_cargarValijasDespues.Name = "chk_cargarValijasDespues";
+            this.chk_cargarValijasDespues.Size = new System.Drawing.Size(161, 19);
+            this.chk_cargarValijasDespues.TabIndex = 20;
+            this.chk_cargarValijasDespues.Text = "Cargar valijas en Check In";
+            this.chk_cargarValijasDespues.UseVisualStyleBackColor = true;
+            this.chk_cargarValijasDespues.CheckedChanged += new System.EventHandler(this.chk_cargarValijasDespues_CheckedChanged);
             // 
             // VentaPasajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(764, 450);
+            this.Controls.Add(this.chk_cargarValijasDespues);
+            this.Controls.Add(this.btn_comprarMasPasajes);
+            this.Controls.Add(this.btn_comprarPasaje);
+            this.Controls.Add(this.txt_peso2);
+            this.Controls.Add(this.txt_peso1);
+            this.Controls.Add(this.lbl_cantidadValijas);
+            this.Controls.Add(this.cbo_cantidadValijas);
+            this.Controls.Add(this.lbl_precio);
             this.Controls.Add(this.btn_cotizar);
-            this.Controls.Add(this.cbo_esPremium);
+            this.Controls.Add(this.chk_esPremium);
             this.Controls.Add(this.cbo_vuelo);
             this.Controls.Add(this.lbl_seleccioneVuelo);
             this.Controls.Add(this.chk_internacional);
@@ -191,7 +287,15 @@
         private CheckBox chk_internacional;
         private Label lbl_seleccioneVuelo;
         private ComboBox cbo_vuelo;
-        private CheckBox cbo_esPremium;
+        private CheckBox chk_esPremium;
         private Button btn_cotizar;
+        private Label lbl_precio;
+        private ComboBox cbo_cantidadValijas;
+        private Label lbl_cantidadValijas;
+        private TextBox txt_peso1;
+        private TextBox txt_peso2;
+        private Button btn_comprarPasaje;
+        private Button btn_comprarMasPasajes;
+        private CheckBox chk_cargarValijasDespues;
     }
 }

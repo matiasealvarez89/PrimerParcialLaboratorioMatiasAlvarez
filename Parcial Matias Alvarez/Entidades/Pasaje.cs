@@ -20,6 +20,10 @@ namespace Entidades
         static int ultimoId = 5000;
 
 
+        public Pasaje()
+        {
+
+        }
         public Pasaje(int dni, string idVuelo, bool esPremium)
         {
             this.idVuelo = idVuelo;
@@ -49,20 +53,7 @@ namespace Entidades
             }             
         }
 
-        //public void CargarVuelo(string idVuelo)
-        //{
-        //    if (idVuelo != null)
-        //    {
-        //        foreach (Vuelo item in Aerolinea.ListadoVuelos())
-        //        {
-        //            if (item.Id == idVuelo)
-        //            {
-        //                vuelo = item;
-        //                break;
-        //            }
-        //        }
-        //    }
-        //}
+        
 
         public bool EsPremium
         {
@@ -93,7 +84,12 @@ namespace Entidades
             get { return pesoEquipaje; }
         }
 
-        private void CalcularPrecio()
+        public Persona Persona
+        {
+            get { return persona; }
+        }
+
+        public void CalcularPrecio()
         {
             Vuelo auxVuelo = Aerolinea.RetornarVueloPorId(IdVuelo);
             
@@ -120,10 +116,58 @@ namespace Entidades
             }            
         }
 
+        public void CalcularPrecio(Vuelo auxVuelo)
+        {           
+
+            if (auxVuelo != null)
+            {
+                float duracion = auxVuelo.CalcularDuracionVuelo();
+                float precio = 0;
+
+                switch (auxVuelo.Internacional)
+                {
+                    case "No":
+                        precio = duracion * 50;
+                        break;
+                    case "Si":
+                        precio = duracion * 100;
+                        break;
+                }
+                if (EsPremium)
+                {
+                    precio += precio * 15 / 100;
+                }
+
+                this.precio = precio;
+            }
+        }
+
         private void CargarId()
         {
             id = ultimoId;
             ultimoId++;
+        }
+
+        public int RetornarDniPorId(int id)
+        {
+            if(id == Id)
+            {
+                return persona.Dni;
+            }
+            return 0;
+        }
+
+        public override string ToString()
+        {
+            Vuelo auxVuelo = Aerolinea.RetornarVueloPorId(this.IdVuelo);
+            
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Vuelo: {this.IdVuelo}");
+            sb.AppendLine($"Precio: U$S {this.Precio}");
+            sb.AppendLine($"Salida: {auxVuelo.Salida}");
+            sb.AppendLine($"Llegada: {auxVuelo.Llegada}");
+            sb.AppendLine($"Codigo de pasaje: {this.Id}");
+            return sb.ToString();
         }
 
     }

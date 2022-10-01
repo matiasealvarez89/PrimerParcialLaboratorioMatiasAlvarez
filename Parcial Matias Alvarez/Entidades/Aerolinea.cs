@@ -41,12 +41,12 @@
             listadoPasajes.Add(new Pasaje(30234657, "HF-598", 2, 15, true));
             listadoPasajes.Add(new Pasaje(32104665, "HF-598", 1, 15, false));
             listadoPasajes.Add(new Pasaje(34834647, "HF-598", 1, 20, false));
-
         }
 
         private static void CargarVuelos()
         {
             listadoVuelos.Add(new Vuelo("HF-598", "Recife", 3245, new DateTime(2022, 11, 6, 9, 30, 0)));
+            listadoVuelos.Add(new Vuelo("RX-423", "Puerto Madryn", 2939, new DateTime(2022, 10, 20, 12,45, 0)));
         }
 
         private static void CargarPersonas()
@@ -57,7 +57,16 @@
             listadoPersonas.Add(new Persona("Florencia", "Juarez", 34864557, new DateTime(1990, 8, 25)));
             listadoPersonas.Add(new Persona("Ariel", "Hefre", 32104665, new DateTime(1996, 3, 23)));
             listadoPersonas.Add(new Persona("Matias", "Alvarez", 34834647, new DateTime(1989, 12, 6)));
-
+            listadoPersonas.Add(new Persona("Clara", "Alvarez", 57110234, new DateTime(2018, 7, 26)));
+            listadoPersonas.Add(new Persona("Andrea", "Gomez", 28372432, new DateTime(1982, 2, 4)));
+            listadoPersonas.Add(new Persona("Lucas", "Rodriguez", 33223432, new DateTime(1990, 1, 6)));
+            listadoPersonas.Add(new Persona("Ornela", "Curcio", 35424654, new DateTime(1987, 3, 2)));
+            listadoPersonas.Add(new Persona("Esteban", "Prieto", 32893245, new DateTime(1989, 12, 6)));
+            listadoPersonas.Add(new Persona("Ignacio", "Cuchu", 23943234, new DateTime(1992, 7, 29)));
+            listadoPersonas.Add(new Persona("Pepe", "Sibrian", 18234543, new DateTime(1962, 2, 15)));
+            listadoPersonas.Add(new Persona("Jorge", "Arias", 22432987, new DateTime(1972, 5, 6)));
+            listadoPersonas.Add(new Persona("Maria", "Del Huerto", 22432987, new DateTime(1962, 6, 6)));
+            listadoPersonas.Add(new Persona("Diego", "Simeone", 28324362, new DateTime(1978, 6, 29)));
         }
 
         private static void CargarFlotaAviones()
@@ -185,6 +194,20 @@
             {
                 item.ActualizarVuelo();
             }
+        }
+
+        public static List<Pasaje> FiltrarListaPasajePorIdVuelo(string idVuelo)
+        {
+            List<Pasaje> listaFiltrada = new List<Pasaje>();
+
+            foreach (Pasaje item in listadoPasajes)
+            {
+                if (idVuelo == item.IdVuelo)
+                {
+                    listaFiltrada.Add(item);
+                }
+            }
+            return listaFiltrada;
         }
 
     }

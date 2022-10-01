@@ -37,15 +37,15 @@ namespace Entidades
         string id;
         string destino;
         int idAvion;
-        List<int> idPasajeros = new List<int> ();        
+        static List<int> idPasajeros = new List<int> ();        
         string internacional;
         DateTime salida;
         DateTime llegada;
         float recaudacion;
         int cantidadPasajeros;
         float duracionVuelo;
-        string asientosDisponibles;
-        string asientosDisponiblesPremium;
+        string? asientosDisponibles;
+        string? asientosDisponiblesPremium;
 
         public Vuelo(string id, string destino, int idAvion, DateTime salida)
         {
@@ -226,6 +226,54 @@ namespace Entidades
             return retorno;
         }
 
+        public bool VerificarSiPasajeEstaEnElVuelo(int dni)
+        {
+            foreach(Pasaje item in Aerolinea.FiltrarListaPasajePorIdVuelo(Id))
+            {
+                if(item.Persona.Dni == dni)
+                {
+                    return true;
+                }
+            }
+            return false;    
+            
+        }
 
+        public void AgregarIdPasajeroAVuelo(int id)
+        {
+            idPasajeros.Add(id);            
+            ActualizarVuelo();
+        }
+
+        public void AgregarIdPasajeroAVueloCantidad(List<int> ids)
+        {
+            if (ids != null)
+            {
+                idPasajeros.AddRange(ids);
+                ActualizarVuelo();
+            }
+            
+        }
+
+        public string ImprimirDniListaPasajeros()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (int dni in idPasajeros)
+            {
+                sb.AppendLine(dni.ToString());
+            }
+            return sb.ToString();
+        }
+
+        public bool EstaCompleto()
+        {
+            Avion avion = Aerolinea.RetornarAvionPorId(IdAvion);
+
+            if(cantidadPasajeros < avion.CantidadAsientos)
+            {
+                return false;
+            }            
+            return true;
+        }
     }
 }

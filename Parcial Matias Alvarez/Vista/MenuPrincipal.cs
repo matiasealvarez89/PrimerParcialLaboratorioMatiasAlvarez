@@ -4,7 +4,7 @@ namespace Formularios
 {
     public partial class MenuPrincipal : Form
     {
-        Usuario usuario;        
+        Usuario usuario;
         static List<Persona> listaPersonas = Aerolinea.ListadoPersonas();
         List<Pasaje> listaPasajes = Aerolinea.ListadoPasajes();
         static List<Vuelo> listadoVuelos = Aerolinea.ListadoVuelos();
@@ -15,19 +15,19 @@ namespace Formularios
         {
             InitializeComponent();
 
-            usuario = aux;           
+            usuario = aux;
             lbl_nombreUsuario.Text = "Usuario: " + usuario.user + " " + DateTime.Now.Date.ToString("dd-MM-yyyy");
 
-            ActualizarListaVuelos();            
+            ActualizarListaVuelos();
         }
 
         public void ActualizarListaVuelos()
         {
             dgv_listadoVuelos.DataSource = null;
-            dgv_listadoVuelos.DataSource = listaPersonas; //Cambiar           
+            dgv_listadoVuelos.DataSource = listadoVuelos;
         }
 
-        
+
 
         public static void CargarPersona(Persona persona)
         {
@@ -36,11 +36,11 @@ namespace Formularios
 
         public static Persona RetornarPersonaPorDNI(int dni)
         {
-            if(dni != 0)
+            if (dni != 0)
             {
                 foreach (Persona persona in listaPersonas)
                 {
-                    if(dni == persona.Dni)
+                    if (dni == persona.Dni)
                     {
                         return persona;
                     }
@@ -62,32 +62,46 @@ namespace Formularios
                 ActualizarListaVuelos();
 
                 MessageBox.Show($"Se cargo Correctamente a {personaAcargar.Nombre}");
-            }            
+            }
         }
-
 
         public static bool ExistePersona(int dni)
         {
             foreach (Persona persona in listaPersonas)
             {
-                if(dni == persona.Dni)
+                if (dni == persona.Dni)
                 {
                     return true;
                 }
             }
             return false;
         }
+
         private void dgv_listadoVuelos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            //this.dgv_listadoVuelos.Columns["Recaudacion"].DefaultCellStyle.Format = "c";
-            
-
-            
+            this.dgv_listadoVuelos.Columns["Recaudacion"].DefaultCellStyle.Format = "c";
         }
 
         public static List<Vuelo> ListadoVueloMenu()
         {
             return listadoVuelos;
+        }
+
+        public static Vuelo RetornarVueloPorId(string idVuelo)
+        {
+            foreach (Vuelo vuelo in listadoVuelos)
+            {
+                if (vuelo.Id == idVuelo)
+                {
+                    return vuelo;
+                }
+            }
+            return null;
+        }
+
+        public List<Pasaje> RetornarListaPasajes()
+        {
+            return listaPasajes;
         }
 
         private void btn_venderPasajes_Click(object sender, EventArgs e)
@@ -96,8 +110,26 @@ namespace Formularios
 
             if(DialogResult.OK == ventaPasajes.ShowDialog())
             {
-                ActualizarListaVuelos();
+                if (ventaPasajes.ComprarMasPasajes == false)
+                {
+                    listaPasajes.Add(ventaPasajes.Pasaje);
+                    ActualizarListaVuelos();
+                    RetornarVueloPorId(ventaPasajes.IdVuelo).AgregarIdPasajeroAVuelo(ventaPasajes.Pasaje.Id);
+
+                    ActualizarListaVuelos();
+                }
+                else
+                {
+                    listaPasajes.AddRange(ventaPasajes.PasajesVariosACargar);
+                    ActualizarListaVuelos();
+                    RetornarVueloPorId(ventaPasajes.IdVuelo).AgregarIdPasajeroAVueloCantidad(ventaPasajes.IdsAAgregarAVuelo);
+
+                    ActualizarListaVuelos();
+                }
             }
+            
         }
+
+        
     }
 }
