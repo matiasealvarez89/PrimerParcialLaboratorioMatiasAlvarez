@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Intrinsics.X86;
 using System.Text;
@@ -163,6 +162,8 @@ namespace Entidades
             
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Vuelo: {this.IdVuelo}");
+            sb.AppendLine($"Nombre: {this.Persona.Nombre}");
+            sb.AppendLine($"Apellido: {this.Persona.Apellido}");
             sb.AppendLine($"Precio: U$S {this.Precio}");
             sb.AppendLine($"Salida: {auxVuelo.Salida}");
             sb.AppendLine($"Llegada: {auxVuelo.Llegada}");

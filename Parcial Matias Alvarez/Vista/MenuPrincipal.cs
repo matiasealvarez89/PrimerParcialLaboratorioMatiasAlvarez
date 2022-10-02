@@ -16,7 +16,12 @@ namespace Formularios
             InitializeComponent();
 
             usuario = aux;
-            lbl_nombreUsuario.Text = "Usuario: " + usuario.user + " " + DateTime.Now.Date.ToString("dd-MM-yyyy");
+            if(usuario.EsAdmin)
+            {
+                btn_cargarNuevoVuelo.Visible = true;
+            }
+
+            lbl_nombreUsuario.Text = "Usuario: " + usuario.User + " " + DateTime.Now.Date.ToString("dd-MM-yyyy");
 
             ActualizarListaVuelos();
         }
@@ -79,7 +84,7 @@ namespace Formularios
 
         private void dgv_listadoVuelos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            this.dgv_listadoVuelos.Columns["Recaudacion"].DefaultCellStyle.Format = "c";
+            //this.dgv_listadoVuelos.Columns["Recaudacion"].DefaultCellStyle.Format = "c";
         }
 
         public static List<Vuelo> ListadoVueloMenu()
@@ -130,6 +135,50 @@ namespace Formularios
             
         }
 
-        
+        private void chk_listaPasajes_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chk_listaPasajes.Checked)
+            {
+                chk_listaPasajes.Checked = true;
+                chk_listaPersonas.Checked = false;
+                chk_listaVuelos.Checked = false;
+
+
+                dgv_listadoVuelos.DataSource = null;
+                dgv_listadoVuelos.DataSource = listaPasajes;
+            }
+            
+
+        }
+
+        private void chk_listaPersonas_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chk_listaPersonas.Checked)
+            {
+                chk_listaPersonas.Checked = true;
+                chk_listaVuelos.Checked = false;
+                chk_listaPasajes.Checked = false;
+
+
+                dgv_listadoVuelos.DataSource = null;
+                dgv_listadoVuelos.DataSource = listaPersonas;
+            }
+            
+        }
+
+        private void chk_listaVuelos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_listaVuelos.Checked)
+            {
+                chk_listaVuelos.Checked = true;
+                chk_listaPersonas.Checked = false;
+                chk_listaPasajes.Checked = false;
+
+
+                dgv_listadoVuelos.DataSource = null;
+                dgv_listadoVuelos.DataSource = listadoVuelos;
+            }
+            
+        }
     }
 }

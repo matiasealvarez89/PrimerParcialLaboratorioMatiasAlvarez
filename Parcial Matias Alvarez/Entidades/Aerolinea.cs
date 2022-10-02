@@ -31,6 +31,7 @@
             listadoEmpleados.Add(new Usuario("jorge", "pep32"));
             listadoEmpleados.Add(new Usuario("lucas", "5746"));
             listadoEmpleados.Add(new Usuario("clara", "4532"));
+            listadoEmpleados.Add(new Usuario("pepe98","1234",true));
         }
 
         private static void CargarPasajes()
@@ -47,6 +48,16 @@
         {
             listadoVuelos.Add(new Vuelo("HF-598", "Recife", 3245, new DateTime(2022, 11, 6, 9, 30, 0)));
             listadoVuelos.Add(new Vuelo("RX-423", "Puerto Madryn", 2939, new DateTime(2022, 10, 20, 12,45, 0)));
+            listadoVuelos.Add(new Vuelo("FE-583", "Santa Rosa", 1623, new DateTime(2022, 10, 27, 0, 0, 0)));
+            listadoVuelos.Add(new Vuelo("TR-128", "Bariloche", 6329, new DateTime(2022, 10, 22, 5, 10, 0)));
+            listadoVuelos.Add(new Vuelo("RE-521", "Corrientes", 8923, new DateTime(2022, 10, 15, 8, 30, 0)));
+            listadoVuelos.Add(new Vuelo("WS-213", "Córdoba", 1007, new DateTime(2022, 10, 12, 17, 30, 0)));
+            listadoVuelos.Add(new Vuelo("FD-581", "Jujuy", 1007, new DateTime(2022, 11, 5, 13, 45, 0)));
+            listadoVuelos.Add(new Vuelo("AT-124", "Roma", 2939, new DateTime(2022, 11, 2, 19, 45, 0)));
+            listadoVuelos.Add(new Vuelo("ER-147", "Acapulco", 9929, new DateTime(2022, 11, 1, 22, 45, 0)));
+            listadoVuelos.Add(new Vuelo("TY-546", "Miami", 6329, new DateTime(2022, 10, 22, 0, 15, 0)));
+            listadoVuelos.Add(new Vuelo("YU-845", "Mendoza", 1623, new DateTime(2022, 10, 9, 3, 20, 0)));
+
         }
 
         private static void CargarPersonas()
@@ -87,7 +98,7 @@
             {
                 foreach (Usuario item in listadoEmpleados)
                 {
-                    if (nombre == item.user && pass == item.clave)
+                    if (nombre == item.User && pass == item.Clave)
                     {
                         return item;
                     }

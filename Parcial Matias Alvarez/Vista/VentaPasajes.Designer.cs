@@ -269,6 +269,7 @@
             this.Controls.Add(this.txt_dni);
             this.Controls.Add(this.lbl_dni);
             this.Name = "VentaPasajes";
+            this.Opacity = 0.98D;
             this.Text = "VentaPasajes";
             this.ResumeLayout(false);
             this.PerformLayout();
