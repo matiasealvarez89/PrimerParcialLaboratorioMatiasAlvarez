@@ -108,6 +108,7 @@
             this.btn_reportes.TabIndex = 5;
             this.btn_reportes.Text = "Reportes";
             this.btn_reportes.UseVisualStyleBackColor = false;
+            this.btn_reportes.Click += new System.EventHandler(this.btn_reportes_Click);
             // 
             // btn_cargarNuevoVuelo
             // 
@@ -178,7 +179,6 @@
             this.dgv_listadoVuelos.RowTemplate.Height = 25;
             this.dgv_listadoVuelos.Size = new System.Drawing.Size(1041, 345);
             this.dgv_listadoVuelos.TabIndex = 4;
-            this.dgv_listadoVuelos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_listadoVuelos_CellFormatting);
             // 
             // panel3
             // 

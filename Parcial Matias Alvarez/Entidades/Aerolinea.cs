@@ -42,6 +42,11 @@
             listadoPasajes.Add(new Pasaje(30234657, "HF-598", 2, 15, true));
             listadoPasajes.Add(new Pasaje(32104665, "HF-598", 1, 15, false));
             listadoPasajes.Add(new Pasaje(34834647, "HF-598", 1, 20, false));
+            listadoPasajes.Add(new Pasaje(22432987, "RX-423", 1, 20, true));
+            listadoPasajes.Add(new Pasaje(32893245, "RX-423", 1, 20, false));
+            listadoPasajes.Add(new Pasaje(28324362, "FE-583", 2, 20, true));
+            listadoPasajes.Add(new Pasaje(22432987, "AT-124", 1, 20, false));
+
         }
 
         private static void CargarVuelos()
@@ -107,7 +112,7 @@
             return null;
         }
 
-        public static Persona EncontrarPersona(int dni)
+        public static Persona? EncontrarPersona(int dni)
         {            
             foreach (Persona item in listadoPersonas)
             {
@@ -149,19 +154,23 @@
             return flotaAviones;
         }
 
-        public static Vuelo? RetornarVueloPorId(string id)
+        public static Vuelo? RetornarVueloPorId(string? id)
         {
-            foreach (Vuelo item in listadoVuelos)
+            if(id != null)
             {
-                if(id == item.Id)
+                foreach (Vuelo item in listadoVuelos)
                 {
-                    return item;
+                    if (id == item.Id)
+                    {
+                        return item;
+                    }
                 }
-            }
+            }            
+            
             return null;
         }
 
-        public static Pasaje RetornarPasajePorId(int id)
+        public static Pasaje? RetornarPasajePorId(int id)
         {
             foreach (Pasaje item in listadoPasajes)
             {

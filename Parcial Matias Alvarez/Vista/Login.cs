@@ -21,7 +21,7 @@ namespace Formularios
 
         private void btn_ingresar_Click(object sender, EventArgs e)
         {
-            Usuario aux = Aerolinea.ValidarUsuario(txt_usuario.Text, txt_pass.Text);
+            Usuario? aux = Aerolinea.ValidarUsuario(txt_usuario.Text, txt_pass.Text);
 
             if(aux != null)
             {

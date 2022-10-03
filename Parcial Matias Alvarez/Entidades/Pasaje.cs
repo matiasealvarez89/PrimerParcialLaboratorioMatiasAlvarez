@@ -10,8 +10,8 @@ namespace Entidades
     public class Pasaje
     {
         int id;
-        Persona persona;
-        string idVuelo;
+        Persona? persona;
+        string? idVuelo;
         float precio;
         bool esPremium;
         int cantidadEquipaje;
@@ -43,7 +43,7 @@ namespace Entidades
             {                
                 foreach (Persona item in Aerolinea.ListadoPersonas())
                 {
-                    if(item.Dni == dni)
+                    if(item.Dni == dni && item !=null)
                     {
                         persona = item;
                         break;
@@ -64,7 +64,7 @@ namespace Entidades
             get { return precio; }
         }       
 
-        public string IdVuelo
+        public string? IdVuelo
         {
             get { return idVuelo; }
         }
@@ -78,14 +78,14 @@ namespace Entidades
             get { return pesoEquipaje; }
         }
 
-        public Persona Persona
+        public Persona? Persona
         {
             get { return persona; }
         }
 
         public void CalcularPrecio()
         {
-            Vuelo auxVuelo = Aerolinea.RetornarVueloPorId(IdVuelo);
+            Vuelo? auxVuelo = Aerolinea.RetornarVueloPorId(IdVuelo);
             
             if(auxVuelo != null)
             {
@@ -110,60 +110,36 @@ namespace Entidades
             }            
         }
 
-        public void CalcularPrecio(Vuelo auxVuelo)
-        {           
-
-            if (auxVuelo != null)
-            {
-                float duracion = auxVuelo.CalcularDuracionVuelo();
-                float precio = 0;
-
-                switch (auxVuelo.Internacional)
-                {
-                    case "No":
-                        precio = duracion * 50;
-                        break;
-                    case "Si":
-                        precio = duracion * 100;
-                        break;
-                }
-                if (EsPremium)
-                {
-                    precio += precio * 15 / 100;
-                }
-
-                this.precio = precio;
-            }
-        }
+       
 
         private void CargarId()
         {
             id = ultimoId;
             ultimoId++;
         }
-
-        public int RetornarDniPorId(int id)
-        {
-            if(id == this.GetHashCode())
-            {
-                return persona.Dni;
-            }
-            return 0;
-        }
+        
 
         public override string ToString()
         {
-            Vuelo auxVuelo = Aerolinea.RetornarVueloPorId(this.IdVuelo);
+            Vuelo? auxVuelo = Aerolinea.RetornarVueloPorId(this.IdVuelo);
             
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Vuelo: {this.IdVuelo}");
-            sb.AppendLine($"Nombre: {this.Persona.Nombre}");
-            sb.AppendLine($"Apellido: {this.Persona.Apellido}");
-            sb.AppendLine($"Precio: U$S {this.Precio}");
-            sb.AppendLine($"Salida: {auxVuelo.Salida}");
-            sb.AppendLine($"Llegada: {auxVuelo.Llegada}");
-            sb.AppendLine($"Codigo de pasaje: {this.GetHashCode()}");
-            return sb.ToString();
+            if(auxVuelo != null)
+            {
+                StringBuilder sb = new();
+                sb.AppendLine($"Vuelo: {IdVuelo}");
+                sb.AppendLine($"Nombre: {Persona.Nombre}");
+                sb.AppendLine($"Apellido: {this.Persona.Apellido}");
+                sb.AppendLine($"Precio: U$S {this.Precio}");
+                sb.AppendLine($"Salida: {auxVuelo.Salida}");
+                sb.AppendLine($"Llegada: {auxVuelo.Llegada}");
+                sb.AppendLine($"Codigo de pasaje: {this.GetHashCode()}");
+                return sb.ToString();
+            }
+            else
+            {
+                return "Error";
+            }
+            
         }
 
         public override int GetHashCode()

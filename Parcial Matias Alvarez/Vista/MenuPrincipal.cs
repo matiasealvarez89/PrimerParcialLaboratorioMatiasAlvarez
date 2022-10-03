@@ -82,21 +82,14 @@ namespace Formularios
             return false;
         }
 
-        private void dgv_listadoVuelos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if(chk_listaVuelos.Checked)
-            {
-                
-            }
-            
-        }
+      
 
         public static List<Vuelo> ListadoVueloMenu()
         {
             return listadoVuelos;
         }
 
-        public static Vuelo RetornarVueloPorId(string idVuelo)
+        public static Vuelo? RetornarVueloPorId(string idVuelo)
         {
             foreach (Vuelo vuelo in listadoVuelos)
             {
@@ -196,6 +189,42 @@ namespace Formularios
                 listadoVuelos.Add(cargaVuelo.VueloAux);
                 ActualizarListaVuelos();
             }
+        }
+
+        private void btn_reportes_Click(object sender, EventArgs e)
+        {
+            Informes informes = new Informes();
+
+            informes.ShowDialog();
+            
+        }
+
+        public static List<Vuelo> FiltrarListaPasajes(DateTime desde, DateTime hasta)
+        {
+            List<Vuelo> listaFiltrada = new List<Vuelo>();
+
+            foreach (Vuelo item in listadoVuelos)
+            {
+                if(item.Salida >= desde && item.Salida <= hasta)
+                {
+                    listaFiltrada.Add(item);
+                }
+            }
+            return listaFiltrada;
+        }
+
+        public static List<Vuelo> FiltrarListaPasajes(DateTime desde, DateTime hasta, string destino)
+        {
+            List<Vuelo> listaFiltrada = new List<Vuelo>();
+
+            foreach (Vuelo item in listadoVuelos)
+            {
+                if (item.Salida >= desde && item.Salida <= hasta && item.Destino == destino)
+                {
+                    listaFiltrada.Add(item);
+                }
+            }
+            return listaFiltrada;
         }
     }
 }
