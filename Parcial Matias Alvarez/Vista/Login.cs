@@ -39,8 +39,8 @@ namespace Formularios
 
         private void btn_autoLogueo_Click(object sender, EventArgs e)
         {
-            txt_usuario.Text = "matias";
-            txt_pass.Text = "123";
+            txt_usuario.Text = "pepe98";
+            txt_pass.Text = "1234";
             btn_ingresar.PerformClick();
         }
     }

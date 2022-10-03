@@ -24,3 +24,4 @@ C:\Users\matia\OneDrive\Escritorio\Parcial Progra II\Parcial Matias Alvarez\Vist
 C:\Users\matia\OneDrive\Escritorio\Parcial Progra II\Parcial Matias Alvarez\Vista\obj\Debug\net6.0-windows\Formularios.VentaPasajes.resources
 C:\Users\matia\OneDrive\Escritorio\Parcial Progra II\Parcial Matias Alvarez\Vista\obj\Debug\net6.0-windows\Formularios.ImpresionPasaje.resources
 C:\Users\matia\OneDrive\Escritorio\Parcial Progra II\Parcial Matias Alvarez\Vista\obj\Debug\net6.0-windows\Formularios.Properties.Resources.resources
+C:\Users\matia\OneDrive\Escritorio\Parcial Progra II\Parcial Matias Alvarez\Vista\obj\Debug\net6.0-windows\Formularios.CargaVuelo.resources

@@ -84,7 +84,11 @@ namespace Formularios
 
         private void dgv_listadoVuelos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            //this.dgv_listadoVuelos.Columns["Recaudacion"].DefaultCellStyle.Format = "c";
+            if(chk_listaVuelos.Checked)
+            {
+                
+            }
+            
         }
 
         public static List<Vuelo> ListadoVueloMenu()
@@ -119,7 +123,7 @@ namespace Formularios
                 {
                     listaPasajes.Add(ventaPasajes.Pasaje);
                     ActualizarListaVuelos();
-                    RetornarVueloPorId(ventaPasajes.IdVuelo).AgregarIdPasajeroAVuelo(ventaPasajes.Pasaje.Id);
+                    RetornarVueloPorId(ventaPasajes.IdVuelo).AgregarIdPasajeroAVuelo(ventaPasajes.Pasaje.GetHashCode());
 
                     ActualizarListaVuelos();
                 }
@@ -146,6 +150,7 @@ namespace Formularios
 
                 dgv_listadoVuelos.DataSource = null;
                 dgv_listadoVuelos.DataSource = listaPasajes;
+                this.dgv_listadoVuelos.Columns["Precio"].DefaultCellStyle.Format = "c";
             }
             
 
@@ -177,8 +182,20 @@ namespace Formularios
 
                 dgv_listadoVuelos.DataSource = null;
                 dgv_listadoVuelos.DataSource = listadoVuelos;
+                this.dgv_listadoVuelos.Columns["Recaudacion"].DefaultCellStyle.Format = "c";
             }
             
+        }
+
+        private void btn_cargarNuevoVuelo_Click(object sender, EventArgs e)
+        {
+            CargaVuelo cargaVuelo = new CargaVuelo();            
+
+            if(DialogResult.OK == cargaVuelo.ShowDialog())
+            {
+                listadoVuelos.Add(cargaVuelo.VueloAux);
+                ActualizarListaVuelos();
+            }
         }
     }
 }

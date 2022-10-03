@@ -91,7 +91,7 @@
             flotaAviones.Add(new Avion(9929, 128, 450, true, true));
         }
 
-        public static Usuario ValidarUsuario(string nombre, string pass)
+        public static Usuario? ValidarUsuario(string nombre, string pass)
         {
 
             if(nombre != null && pass != null)
@@ -149,7 +149,7 @@
             return flotaAviones;
         }
 
-        public static Vuelo RetornarVueloPorId(string id)
+        public static Vuelo? RetornarVueloPorId(string id)
         {
             foreach (Vuelo item in listadoVuelos)
             {
@@ -165,7 +165,7 @@
         {
             foreach (Pasaje item in listadoPasajes)
             {
-                if (id == item.Id)
+                if (id == item.GetHashCode())
                 {
                     return item;
                 }
@@ -173,7 +173,7 @@
             return null;
         }
 
-        public static Avion RetornarAvionPorId(int id)
+        public static Avion? RetornarAvionPorId(int id)
         {
             foreach (Avion item in flotaAviones)
             {
@@ -193,7 +193,7 @@
             {
                 if(idVuelo == item.IdVuelo)
                 {
-                    listaIdPasajePorId.Add(item.Id);
+                    listaIdPasajePorId.Add(item.GetHashCode());
                 }
             }
             return listaIdPasajePorId;
@@ -219,6 +219,22 @@
                 }
             }
             return listaFiltrada;
+        }
+
+        public static string[] RetornarMatriculasFlotaAvionesEnArrayDeString()
+        {
+            List<string> auxLista = new List<string>();
+            string[] lista = new string[7];            
+            
+            foreach (Avion item in flotaAviones)
+            {
+                auxLista.Add(item.Id.ToString());
+                
+            }
+
+            lista = auxLista.ToArray();
+
+            return lista;
         }
 
     }

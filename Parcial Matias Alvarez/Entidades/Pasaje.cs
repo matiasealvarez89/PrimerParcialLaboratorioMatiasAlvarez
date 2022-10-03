@@ -62,12 +62,7 @@ namespace Entidades
         public float Precio
         {
             get { return precio; }
-        }
-
-        public int Id
-        {
-            get { return id; }
-        }
+        }       
 
         public string IdVuelo
         {
@@ -149,7 +144,7 @@ namespace Entidades
 
         public int RetornarDniPorId(int id)
         {
-            if(id == Id)
+            if(id == this.GetHashCode())
             {
                 return persona.Dni;
             }
@@ -167,8 +162,13 @@ namespace Entidades
             sb.AppendLine($"Precio: U$S {this.Precio}");
             sb.AppendLine($"Salida: {auxVuelo.Salida}");
             sb.AppendLine($"Llegada: {auxVuelo.Llegada}");
-            sb.AppendLine($"Codigo de pasaje: {this.Id}");
+            sb.AppendLine($"Codigo de pasaje: {this.GetHashCode()}");
             return sb.ToString();
+        }
+
+        public override int GetHashCode()
+        {
+            return id;
         }
 
     }

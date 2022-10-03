@@ -97,13 +97,13 @@ namespace Entidades
             get { return duracionVuelo; }
         }
 
-        public string AsientosDisponibles
+        public string? AsientosDisponibles
         {
             get { return asientosDisponibles; }
             set { this.asientosDisponibles = value; }
         }
 
-        public string AsientosDisponiblesPremium
+        public string? AsientosDisponiblesPremium
         {
             get { return asientosDisponiblesPremium; }
             set { this.asientosDisponiblesPremium = value; }
@@ -190,7 +190,7 @@ namespace Entidades
 
         private string CalcularAsientosDisponibles()
         {
-            Avion aux = Aerolinea.RetornarAvionPorId(IdAvion);
+            Avion? aux = Aerolinea.RetornarAvionPorId(IdAvion);
             int contadorAsientos = 0;
             List<Pasaje> listaPasajeros = ListaPasajeVuelo();
             string retorno;
@@ -202,6 +202,7 @@ namespace Entidades
                     contadorAsientos++;
                 }
             }
+
             
             retorno = contadorAsientos + "/" + aux.CantidadAsientos;
             return retorno; 
@@ -209,7 +210,7 @@ namespace Entidades
 
         private string CalcularAsientosDisponiblesPremium()
         {
-            Avion aux = Aerolinea.RetornarAvionPorId(IdAvion);
+            Avion? aux = Aerolinea.RetornarAvionPorId(IdAvion);
             int contadorAsientos = 0;
             List<Pasaje> listaPasajeros = ListaPasajeVuelo();
             string retorno;

@@ -68,14 +68,16 @@
             // 
             // dtp_fechaNacimiento
             // 
-            this.dtp_fechaNacimiento.Location = new System.Drawing.Point(154, 219);
+            this.dtp_fechaNacimiento.Location = new System.Drawing.Point(64, 205);
+            this.dtp_fechaNacimiento.MaxDate = new System.DateTime(2022, 10, 2, 0, 0, 0, 0);
             this.dtp_fechaNacimiento.Name = "dtp_fechaNacimiento";
             this.dtp_fechaNacimiento.Size = new System.Drawing.Size(200, 23);
             this.dtp_fechaNacimiento.TabIndex = 3;
+            this.dtp_fechaNacimiento.Value = new System.DateTime(2022, 10, 2, 0, 0, 0, 0);
             // 
             // txt_nombre
             // 
-            this.txt_nombre.Location = new System.Drawing.Point(154, 96);
+            this.txt_nombre.Location = new System.Drawing.Point(103, 96);
             this.txt_nombre.MaxLength = 50;
             this.txt_nombre.Name = "txt_nombre";
             this.txt_nombre.Size = new System.Drawing.Size(195, 23);
@@ -84,7 +86,7 @@
             // 
             // txt_apellido
             // 
-            this.txt_apellido.Location = new System.Drawing.Point(154, 152);
+            this.txt_apellido.Location = new System.Drawing.Point(103, 152);
             this.txt_apellido.MaxLength = 50;
             this.txt_apellido.Name = "txt_apellido";
             this.txt_apellido.Size = new System.Drawing.Size(195, 23);
@@ -93,7 +95,7 @@
             // 
             // txt_dni
             // 
-            this.txt_dni.Location = new System.Drawing.Point(159, 50);
+            this.txt_dni.Location = new System.Drawing.Point(103, 50);
             this.txt_dni.MaxLength = 8;
             this.txt_dni.Name = "txt_dni";
             this.txt_dni.Size = new System.Drawing.Size(195, 23);
@@ -102,7 +104,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(308, 320);
+            this.btn_cancel.Location = new System.Drawing.Point(189, 252);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 7;
@@ -112,7 +114,7 @@
             // 
             // btn_accept
             // 
-            this.btn_accept.Location = new System.Drawing.Point(93, 320);
+            this.btn_accept.Location = new System.Drawing.Point(64, 252);
             this.btn_accept.Name = "btn_accept";
             this.btn_accept.Size = new System.Drawing.Size(75, 23);
             this.btn_accept.TabIndex = 8;
@@ -124,7 +126,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(485, 384);
+            this.ClientSize = new System.Drawing.Size(321, 300);
+            this.ControlBox = false;
             this.Controls.Add(this.btn_accept);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.txt_dni);

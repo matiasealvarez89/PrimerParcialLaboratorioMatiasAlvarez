@@ -289,7 +289,7 @@ namespace Formularios
                     {
                         pasajesVariosACargar.Add(pasajeAux);
                         IdVuelo = pasajeAux.IdVuelo;
-                        idsAAgregarAVuelo.Add(pasajeAux.Id);
+                        idsAAgregarAVuelo.Add(pasajeAux.GetHashCode());
 
                         foreach (Pasaje pasaje in pasajesVariosACargar)
                         {
@@ -328,7 +328,7 @@ namespace Formularios
             {
                 pasajesVariosACargar.Add(pasajeAux);
                 IdVuelo = pasajeAux.IdVuelo;
-                idsAAgregarAVuelo.Add(pasajeAux.Id);                
+                idsAAgregarAVuelo.Add(pasajeAux.GetHashCode());                
                 ComprarMasPasajes = true;
                 LimpiarFormulario();                
             }

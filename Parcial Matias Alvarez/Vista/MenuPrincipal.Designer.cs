@@ -123,6 +123,7 @@
             this.btn_cargarNuevoVuelo.Text = "Crear Vuelo";
             this.btn_cargarNuevoVuelo.UseVisualStyleBackColor = false;
             this.btn_cargarNuevoVuelo.Visible = false;
+            this.btn_cargarNuevoVuelo.Click += new System.EventHandler(this.btn_cargarNuevoVuelo_Click);
             // 
             // lbl_nombreUsuario
             // 

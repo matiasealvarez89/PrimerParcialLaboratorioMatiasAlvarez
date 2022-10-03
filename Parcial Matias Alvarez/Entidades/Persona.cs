@@ -53,7 +53,7 @@ namespace Entidades
                 return edad;
             }
         }
-        public string Nombre
+        public string? Nombre
         {
             get { return nombre; }
         }
