@@ -10,7 +10,7 @@
 ### La aplicación esta pensada para que una empleado de una aerelinea pueda: ver vuelos disponibles, cargar clientes y vender pasajes. Ademas puede sacar reportes donde se veran los listados de los vuelos, segun los filtros seleccionados.
 
 ## **Diagrama de clases:**
-<image src= "\Parcial Progra II\Parcial Matias Alvarez\Imagenes\Captura de pantalla 2022-10-03 154058.png" alt = "Diagrama de clases">
+<image src= "Parcial Matias Alvarez\Imagenes\Captura de pantalla 2022-10-03 154058.png" alt = "Diagrama de clases">
 
 ## **Justificación tecnica:**
 #### Para este proyecto se utilizaron varios conceptos vistos en clase, sobre la Programación orientada a objetos. Ademas se intentó utilizar los conceptos de DRY en todo el codigo, atomizando lo mas posible el codigo y siendo lo mas claro posible.
