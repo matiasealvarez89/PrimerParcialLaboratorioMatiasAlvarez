@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Entidades
 {
     
-    public class Pasaje
+    public class Pasaje : Persona
     {
         int id;
         Persona? persona;
